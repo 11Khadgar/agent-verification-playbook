@@ -1,0 +1,46 @@
+name: Rule feedback
+description: 某条规则在你的 setup 上失效、说不清，或者本来就不该存在
+title: "[feedback] "
+labels: ["feedback"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: 哪一条
+      options:
+        - handoff-notebook
+        - deep-fix-gates
+        - orchestrate-agent-team-delivery
+        - image-quality-workflow
+        - check-native-ecosystem-before-building
+        - examples/AGENTS.md.example
+        - 整体 / README
+    validations:
+      required: true
+  - type: input
+    id: harness
+    attributes:
+      label: 你的 harness 与版本
+      description: 例如 Pi 0.54 / Claude Code 2.x / Codex CLI / 裸提示词
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: 发生了什么
+      description: 具体到这一步哪句话不管用、agent 实际干了什么。贴原始输出，不要复述成结论。
+    validations:
+      required: true
+  - type: textarea
+    id: expect
+    attributes:
+      label: 你希望规则怎么写
+      description: 如果只是"这条删掉"，说明为什么它在你那里是负收益——反面证据比措辞建议有用。
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: 适用范围
+      options:
+        - label: 这条规则与 harness 无关，本该通用
+        - label: 这条规则属于某个 harness 的附录，不是通用原则
+        - label: 这条规则已经过期（附件的快照日期已经不准）
